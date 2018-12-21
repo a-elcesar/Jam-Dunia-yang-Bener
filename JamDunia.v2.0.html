@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <h1> Jam Dunia </h1>
+        <p><span id='-7'></span> * GMT+0 London, Inggris</p>
+        <p><span id='-6'></span> * GMT+1 Paris, Prancis</p>
+        <p><span id='-5'></span> * GMT+2 Istanbul, Turkey</p>
+        <p><span id='-4'></span> * GMT+3 Moskow, Rusia</p>
+        <p><span id='-3'></span> * GMT+4 Abu Dhabi, UEA</p>
+        <p><span id='-2'></span> * GMT+5 Islamabad, Pakistan</p>
+        <p><span id='-1'></span> * GMT+6 Astana, Kazakhstan</p>
+        <p><span id='0'></span> * GMT+7 Jakarta, Indonesia</p>
+        <p><span id='1'></span> * GMT+8 Beijing, China</p>
+        <p><span id='2'></span> * GMT+9 Tokyo, Jepang</p>
+        <br>
+        <p>Selisih Antar Zona Waktu = 1 Jam, 1 Menit, 1 Detik</p>
+    </center>
+    <script>
+        var zona = [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2]
+        setInterval(() => {
+            for (i = 0; i < zona.length; i++) {
+                var x = new Date();
+                x.setHours(x.getHours() + (zona[i]), x.getMinutes() + (zona[i]), x.getSeconds() + (zona[i]));
+                var jam = x.getHours();
+                var menit = x.getMinutes();
+                var detik = x.getSeconds();
+                switch (detik.toString().length) {
+                    case 1:
+                        detik = '0' + detik
+                        break
+                }
+                switch (menit.toString().length) {
+                    case 1:
+                        menit = '0' + menit
+                        break
+                }
+                switch (jam.toString().length) {
+                    case 1:
+                        jam = '0' + jam
+                        break
+                }
+                var waktu = `${jam}:${menit}:${detik}`
+                document.getElementById(zona[i]).innerHTML = waktu
+            }
+        }, 1000)
+    </script>
+</body>
+
+</html>
